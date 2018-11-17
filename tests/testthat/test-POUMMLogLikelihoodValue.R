@@ -23,6 +23,9 @@ x <- g + rnorm(n = N, mean = 0, sd = sqrt(sigmae2))
 
 cppObj3Point <- New3PointPOUMMCppObject(x, tree)
 
+print(POUMMLogLik(x, tree, x0, alpha, theta, sigma2, sigmae2))
+print(POUMMLogLikCpp(x, tree, x0, alpha, theta, sigma2, sigmae2, 
+                     cppObj3Point, 0))
 test_that(
   "POUMMLogLik == POUMMLogLikCpp 3-point", {
     expect_equal(POUMMLogLik(x, tree, x0, alpha, theta, sigma2, sigmae2),
