@@ -29,6 +29,7 @@
 
 #include "ThreePointUnivariate.h"
 #include "NumericTraitData.h"
+#include <iostream>
 
 using namespace SPLITT;
 
@@ -102,6 +103,18 @@ public:
     this->sigma2 = par[3];
     this->sigmae2 = par[4];
     this->e2alphaT = exp(-2*alpha*T);
+    
+    std::cout<<"SetParameter:"<<std::endl<<
+      "x0:"<<this->x0<<std::endl<<
+        "alpha:"<<this->alpha<<std::endl<<
+          "theta:"<<this->theta<<std::endl<<
+            "sigma2"<<this->sigma2<<std::endl<<
+              "sigmae2"<<this->sigmae2<<std::endl<<
+                "e2alphaT"<<this->e2alphaT<<std::endl;
+      
+      ;
+    
+      
   }
 
   inline void InitNode(uint i) {
@@ -131,9 +144,20 @@ public:
   // }
   // 
   inline StateType StateAtRoot() const {
+    std::cout<<"StateAtRoot: "<<std::endl<<
+      "x0: "<<this->x0<<std::endl<<
+        "alpha: "<<this->alpha<<std::endl<<
+          "theta: "<<this->theta<<std::endl<<
+            "sigma2: "<<this->sigma2<<std::endl<<
+              "sigmae2: "<<this->sigmae2<<std::endl<<
+                "e2alphaT: "<<this->e2alphaT<<std::endl;
+    
     vec res(1);
     double lnDetVRoot = 2*alpha*sum_u + this->lnDetV[this->ref_tree_.num_nodes() - 1];
+    std::cout<<"lnDetVRoot: "<<lnDetVRoot<<std::endl;
+    
     double QRoot = this->Q[this->ref_tree_.num_nodes() - 1];
+    std::cout<<"QRoot: "<<QRoot<<std::endl;
     res[0] = -0.5*(this->ref_tree_.num_tips() * log(2*G_PI)+ lnDetVRoot + QRoot);
     return res;
   }
