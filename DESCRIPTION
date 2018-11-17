@@ -1,0 +1,58 @@
+Package: ThreePointUsingSPLITT
+Type: Package
+Title: Implementation of the 3-Point Structure Algorithm using the 'SPLITT' Library
+Version: 1.0.1
+Date: 2018-11-16
+Authors@R: person("Venelin", "Mitov", email = "vmitov@gmail.com",
+                 role = c("aut", "cre", "cph"))
+Maintainer: Venelin Mitov <vmitov@gmail.com>
+Description: The 3-point structure algorithm is a linear time algorithm for
+    calculating the determinant, |V|, and any quadratic product of the form 
+    (a' V^{-1} b), where V is a N x N covariance matrix satisfying a 3-point
+    structure, and a is a column vector of size N. This algorithm has been 
+    introduced in the article "A linear-time algorithm for Gaussian and 
+    non-Gaussian trait evolution models" by Lam si Tung Ho and Cecile Ane 
+    published in Systematic Biology in 2014. A matrix V has a 3-point 
+    structure if it is symmetric, with nonnegative entries (Vij >= 0) and 
+    satisfies the following 3-point condition: for any i,j,k (not necessarily 
+    distinct), the two smallest of Vij , Vik , and Vjk are equal 
+    (Ho and Ane, 2014). This 3-point structure property implies that the matrix
+    V can be encoded in a tree of N tips, where any element Vij equals the 
+    distance from the root to the most recent common ancestor of the tips i and
+    j with "most recent common ancestor" meaning the node farthest away from the
+    root of the tree that is an ancestor of both i and j. This is equaivalent to
+    the covariance structure arising from a univariate branching Wiener 
+    stochastic process. The algorithm is generalized to multivaraite such 
+    processes (Ho and Ane, 2014). The algorithm does not need to construct the 
+    matrix V in the memory, hence it is O(N) complex, both in terms of time and 
+    memory. This R-package implements parallel version of this algorithm, based 
+    on the 'SPLITT' library for parallel lineage traversal of trees 
+    <https://venelin.github.io/SPLITT/index.html>. The header file 
+    'ThreePointUnivariate.h' provides the univariate implementation; the header 
+    'ThreePointMultivariate.h' provides the multivariate implementation. These
+    two headers implement traversal specifications as base C++ classes that can
+    be inherited by specific model classes. Two examples of such model classes
+    are the PMM model implemented in the header 'ThreePointPMM.h' and the POUMM
+    model implemented in the header file 'ThreePointUnivariate.h'. The purpose of
+    these two classes is to provide fast parallel likelihood evaluation for the
+    two models given a phylogenetic tree and univariate trait data measured at 
+    its tips. Both of the classes can be invoked from R via Rcpp modules based on
+    the package Rcpp <https://CRAN.R-project.org/package=Rcpp>.
+License: GPL (>= 3.0)
+LazyData: true
+Encoding: UTF-8
+Depends:
+    R (>= 3.1.0),
+    Rcpp,
+    methods
+LinkingTo: Rcpp
+Imports:
+    ape
+Suggests: 
+    testthat
+RoxygenNote: 6.1.1
+ByteCompile: yes
+NeedsCompilation: yes
+URL: https://github.com/venelin/ThreePointUsingSPLITT, https://venelin.github.io/SPLITT/index.html
+BugReports: https://github.com/venelin/ThreePointUsingSPLITT/issues
+
