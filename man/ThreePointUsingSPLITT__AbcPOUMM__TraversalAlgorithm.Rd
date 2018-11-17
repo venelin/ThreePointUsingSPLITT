@@ -3,11 +3,6 @@
 \name{ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm}
 \alias{ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm}
 \alias{Rcpp_ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm-class}
-\alias{Rcpp}
-\alias{module}
-\alias{for}
-\alias{the}
-\alias{\code{TraversalTaskThreePointPOUMM}-class}
 \title{Base class for \code{ThreePointUsingSPLITT::AbcPOUMM::AlgorithmType}}
 \description{
 Base class for \code{ThreePointUsingSPLITT::AbcPOUMM::AlgorithmType}
