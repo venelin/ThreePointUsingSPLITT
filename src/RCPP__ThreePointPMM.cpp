@@ -62,7 +62,7 @@ RCPP_MODULE(ThreePointUsingSPLITT__TraversalTaskThreePointPMM) {
   // Expose the properties VersionOPENMP and NumOmpThreads from the base 
   // TraversalAlgorithm class
   Rcpp::class_<TraversalTaskThreePointPMM::AlgorithmType::ParentType> (
-      "ThreePointUsingSPLITT__ThreePointMM__TraversalAlgorithm"
+      "ThreePointUsingSPLITT__ThreePointPMM__TraversalAlgorithm"
     )
   .property( "VersionOPENMP",
              &TraversalTaskThreePointPMM::AlgorithmType::ParentType::VersionOPENMP )
@@ -73,10 +73,10 @@ RCPP_MODULE(ThreePointUsingSPLITT__TraversalTaskThreePointPMM) {
   // Expose the TraversalTaskThreePointPMM::AlgorithmType specifying that it derives 
   // from the base TraversalAlgorithm class
   Rcpp::class_<TraversalTaskThreePointPMM::AlgorithmType> (
-      "ThreePointUsingSPLITT__ThreePointMM__AlgorithmType"
+      "ThreePointUsingSPLITT__ThreePointPMM__AlgorithmType"
     )
   .derives<TraversalTaskThreePointPMM::AlgorithmType::ParentType>(
-      "ThreePointUsingSPLITT__ThreePointMM__TraversalAlgorithm"
+      "ThreePointUsingSPLITT__ThreePointPMM__TraversalAlgorithm"
     )
   ;
   
