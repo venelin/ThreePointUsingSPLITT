@@ -29,6 +29,7 @@
 
 #include "ThreePointUnivariate.h"
 #include "NumericTraitData.h"
+#include <algorithm>
 #include <iostream>
 
 using namespace SPLITT;
@@ -72,12 +73,14 @@ public:
       this->set_X_and_Y(X, X);
 
       // A root-to-node distance vector in the order of pruning processing
-      h.resize(this->ref_tree_.num_nodes() - 1);
+      h.resize(this->ref_tree_.num_nodes());
+      std::fill(h.begin(), h.end(), 0.0);
+      
       for(int i = this->ref_tree_.num_nodes() - 2; i >= 0; i--) {
         h[i] = h[this->ref_tree_.FindIdOfParent(i)] + this->ref_tree_.LengthOfBranch(i);
       }
 
-      this->T = *std::max_element(h.begin(), h.begin()+this->ref_tree_.num_tips());
+      this->T = *std::max_element(h.begin(), h.begin() + this->ref_tree_.num_tips());
       
       this->u = SPLITT::vec(this->ref_tree_.num_tips());
       for(int i = 0; i < this->ref_tree_.num_tips(); i++) {
@@ -103,18 +106,6 @@ public:
     this->sigma2 = par[3];
     this->sigmae2 = par[4];
     this->e2alphaT = exp(-2*alpha*T);
-    
-    std::cout<<"SetParameter:"<<std::endl<<
-      "x0:"<<this->x0<<std::endl<<
-        "alpha:"<<this->alpha<<std::endl<<
-          "theta:"<<this->theta<<std::endl<<
-            "sigma2"<<this->sigma2<<std::endl<<
-              "sigmae2"<<this->sigmae2<<std::endl<<
-                "e2alphaT"<<this->e2alphaT<<std::endl;
-      
-      ;
-    
-      
   }
 
   inline void InitNode(uint i) {
@@ -137,27 +128,13 @@ public:
     }
   }
 
-  // StateType StateAtRoot() const {
-  //   vec res = BaseType::StateAtRoot();
-  //   res.push_back(alpha*sum_u);
-  //   return res;
-  // }
-  // 
   inline StateType StateAtRoot() const {
-    std::cout<<"StateAtRoot: "<<std::endl<<
-      "x0: "<<this->x0<<std::endl<<
-        "alpha: "<<this->alpha<<std::endl<<
-          "theta: "<<this->theta<<std::endl<<
-            "sigma2: "<<this->sigma2<<std::endl<<
-              "sigmae2: "<<this->sigmae2<<std::endl<<
-                "e2alphaT: "<<this->e2alphaT<<std::endl;
-    
     vec res(1);
     double lnDetVRoot = 2*alpha*sum_u + this->lnDetV[this->ref_tree_.num_nodes() - 1];
-    std::cout<<"lnDetVRoot: "<<lnDetVRoot<<std::endl;
+    // std::cout<<"lnDetVRoot: "<<lnDetVRoot<<std::endl;
     
     double QRoot = this->Q[this->ref_tree_.num_nodes() - 1];
-    std::cout<<"QRoot: "<<QRoot<<std::endl;
+    // std::cout<<"QRoot: "<<QRoot<<std::endl;
     res[0] = -0.5*(this->ref_tree_.num_tips() * log(2*G_PI)+ lnDetVRoot + QRoot);
     return res;
   }
