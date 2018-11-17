@@ -43,7 +43,7 @@ NULL
 #' Base class for \code{ThreePointUsingSPLITT::AbcPOUMM::AlgorithmType}
 #' @name ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm
 #' @aliases Rcpp_ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm-class
-
+NULL
 
 #' Rcpp module for the \code{TraversalTaskThreePointPOUMM}-class
 #' @name ThreePointUsingSPLITT__TraversalTaskThreePointPOUMM
