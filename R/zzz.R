@@ -29,6 +29,52 @@
 #    loadRcppModules()
 #}
 
+
+#' Rcpp module for the \code{TraversalTaskAbcPOUMM}-class
+#' @name ThreePointUsingSPLITT__TraversalTaskAbcPOUMM
+#' @aliases Rcpp_ThreePointUsingSPLITT__TraversalTaskAbcPOUMM-class
+NULL
+
+#' \code{TraversalAlgorithm}-type used in \code{AbcPOUMM}
+#' @name ThreePointUsingSPLITT__AbcPOUMM__AlgorithmType
+#' @aliases Rcpp_ThreePointUsingSPLITT__AbcPOUMM__AlgorithmType-class
+NULL
+
+#' Base class for \code{ThreePointUsingSPLITT::AbcPOUMM::AlgorithmType}
+#' @name ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm
+#' @aliases Rcpp_ThreePointUsingSPLITT__AbcPOUMM__TraversalAlgorithm-class
+
+
+#' Rcpp module for the \code{TraversalTaskThreePointPOUMM}-class
+#' @name ThreePointUsingSPLITT__TraversalTaskThreePointPOUMM
+#' @aliases Rcpp_ThreePointUsingSPLITT__TraversalTaskThreePointPOUMM-class
+NULL
+
+#' \code{TraversalAlgorithm}-type used in \code{ThreePointPOUMM}
+#' @name ThreePointUsingSPLITT__ThreePointPOUMM__AlgorithmType
+#' @aliases Rcpp_ThreePointUsingSPLITT__ThreePointPOUMM__AlgorithmType-class
+NULL
+
+#' Base class for \code{ThreePointUsingSPLITT::ThreePointPOUMM::AlgorithmType}
+#' @name ThreePointUsingSPLITT__ThreePointPOUMM__TraversalAlgorithm
+#' @aliases Rcpp_ThreePointUsingSPLITT__ThreePointPOUMM__TraversalAlgorithm-class
+NULL
+
+
+#' Rcpp module for the \code{TraversalTaskThreePointPMM}-class
+#' @name ThreePointUsingSPLITT__TraversalTaskThreePointPMM
+#' @aliases Rcpp_ThreePointUsingSPLITT__TraversalTaskThreePointPMM-class
+NULL
+
+#' \code{TraversalAlgorithm}-type used in \code{ThreePointPMM}
+#' @name ThreePointUsingSPLITT__ThreePointPMM__AlgorithmType
+#' @aliases Rcpp_ThreePointUsingSPLITT__ThreePointPMM__AlgorithmType-class
+NULL
+
+#' Base class for \code{ThreePointUsingSPLITT::ThreePointPMM::AlgorithmType}
+#' @name ThreePointUsingSPLITT__ThreePointPMM__TraversalAlgorithm
+#' @aliases Rcpp_ThreePointUsingSPLITT__ThreePointPMM__TraversalAlgorithm-class
+NULL
 # loading the RCPP C++ modules
 
 loadModule( "ThreePointUsingSPLITT__TraversalTaskThreePointPMM", TRUE )
