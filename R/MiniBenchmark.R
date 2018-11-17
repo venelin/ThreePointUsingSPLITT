@@ -92,6 +92,7 @@ MiniBenchmark <- function(N = 10000, Ntests = 10) {
   tR <- system.time(for(t in seq_len(Ntests/10)) POUMMLogLik(x, tree, x0, alpha, theta, sigma2, sigmae2, ord = ord))[3] / (Ntests/10)
   unname(tR)
   
+  
   measureTimePOUMMCpp <- function(mode) {
     unname(
       system.time(
